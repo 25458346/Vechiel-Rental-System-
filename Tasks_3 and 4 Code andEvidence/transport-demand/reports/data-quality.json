@@ -1,0 +1,22 @@
+{
+  "month": "2025-01-01",
+  "end_exclusive": "2025-02-01",
+  "source_rows": 3475226,
+  "accepted_rows": 3373177,
+  "rejected_rows": 102049,
+  "outcomes": {
+    "accepted": 3373177,
+    "invalid_distance": 89138,
+    "invalid_duration": 3368,
+    "unknown_zone": 9521,
+    "outside_month_or_missing_pickup": 22
+  },
+  "aggregate_rows": 92875,
+  "trip_file_sha256": "9af277e4c0d3f9deb30644da822981e1e7df6af58313170fd3aa8a474485488a",
+  "zone_file_sha256": "1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed",
+  "built_utc": "2026-09-28T00:32:51.319878+00:00",
+  "processing_seconds": 1.374,
+  "memory_limit": "512MB",
+  "threads": 2,
+  "interpretation": "Recorded yellow-taxi pickups, not unmet demand or a forecast"
+}

@@ -1,0 +1,31 @@
+pipeline {
+    agent { label 'transport-windows' }
+    options { disableConcurrentBuilds(); timeout(time: 20, unit: 'MINUTES'); skipDefaultCheckout(true) }
+    triggers { pollSCM('H/2 * * * *') }
+    stages {
+        stage('Checkout') {
+            steps { deleteDir(); checkout scm }
+        }
+        stage('Locked dependencies') {
+            steps { bat '"%TRANSPORT_UV%" pip sync --python "%TRANSPORT_PYTHON%" requirements-dev.lock --require-hashes' }
+        }
+        stage('Functional SCA and SAST') {
+            steps { bat '"%TRANSPORT_PYTHON%" scripts\\verify.py --stage static' }
+        }
+        stage('Live checks and DAST') {
+            steps { bat '"%TRANSPORT_PYTHON%" scripts\\verify.py --stage runtime' }
+        }
+        stage('Deliver verified source') {
+            steps {
+                bat '"%TRANSPORT_PYTHON%" scripts\\release.py'
+                archiveArtifacts artifacts: 'dist/*.zip,reports/release.json', fingerprint: true
+            }
+        }
+    }
+    post {
+        always {
+            junit testResults: 'reports/tests.xml', allowEmptyResults: true
+            archiveArtifacts artifacts: 'reports/*.json,reports/*.html,reports/*.xml', allowEmptyArchive: true
+        }
+    }
+}

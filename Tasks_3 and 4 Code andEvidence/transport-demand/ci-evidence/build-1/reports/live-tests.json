@@ -1,0 +1,64 @@
+{
+  "target": "http://127.0.0.1:18785",
+  "cases": [
+    {
+      "path": "/health",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "path": "/summary",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "path": "/demand",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "path": "/export.csv",
+      "expected": 200,
+      "actual": 200,
+      "passed": true
+    },
+    {
+      "path": "/demand?zone_id=1%20OR%201=1",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "path": "/demand?hour=%3Cscript%3Ealert(1)%3C/script%3E",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "path": "/demand?limit=1000000",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "path": "/demand?start=2025-02-01",
+      "expected": 422,
+      "actual": 422,
+      "passed": true
+    },
+    {
+      "path": "POST /demand",
+      "expected": 405,
+      "actual": 405,
+      "passed": true
+    }
+  ],
+  "samples": 20,
+  "median_ms": 67.252,
+  "max_ms": 113.935,
+  "acceptance_max_ms": 2000,
+  "source_rows": 3475226
+}

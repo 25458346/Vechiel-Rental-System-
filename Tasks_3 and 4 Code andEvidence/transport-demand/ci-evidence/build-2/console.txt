@@ -1,0 +1,183 @@
+Started by an SCM change
+Checking out git git://127.0.0.1:19428/project into C:\Users\Abayb\Documents\Codex\task34-ci\workspace\Transport-Demand@script\1545cf63e685d6a83e2fa4aab082b7a86a36ae132c4eedc386425416b4004013 to read Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\Users\Abayb\Documents\Codex\task34-ci\workspace\Transport-Demand@script\1545cf63e685d6a83e2fa4aab082b7a86a36ae132c4eedc386425416b4004013\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url git://127.0.0.1:19428/project # timeout=10
+Fetching upstream changes from git://127.0.0.1:19428/project
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.49.0.windows.1'
+ > git.exe fetch --tags --force --progress -- git://127.0.0.1:19428/project +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/codex/task34-evidence^{commit}" # timeout=10
+Checking out Revision 057a8d4937c84c2a3c055a1424129b8c5c422756 (refs/remotes/origin/codex/task34-evidence)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 057a8d4937c84c2a3c055a1424129b8c5c422756 # timeout=10
+Commit message: "Demonstrate regression gate with deliberately doubled pickup totals"
+ > git.exe rev-list --no-walk 7815da3a660a50867f75af8102a37d56e1da3619 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on transport-agent in C:/Users/Abayb/Documents/Codex/task34-ci/agent/workspace/Transport-Demand
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 20 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] deleteDir
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository git://127.0.0.1:19428/project
+ > git.exe init C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand # timeout=10
+Fetching upstream changes from git://127.0.0.1:19428/project
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.49.0.windows.1'
+ > git.exe fetch --tags --force --progress -- git://127.0.0.1:19428/project +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe config remote.origin.url git://127.0.0.1:19428/project # timeout=10
+Avoid second fetch
+Checking out Revision 057a8d4937c84c2a3c055a1424129b8c5c422756 (refs/remotes/origin/codex/task34-evidence)
+Commit message: "Demonstrate regression gate with deliberately doubled pickup totals"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Locked dependencies)
+[Pipeline] bat
+ > git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/codex/task34-evidence^{commit}" # timeout=10
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f 057a8d4937c84c2a3c055a1424129b8c5c422756 # timeout=10
+
+C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand>"C:/Users/Abayb/.local/bin/uv.exe" pip sync --python "C:/Users/Abayb/Documents/Codex/2026-09-26/documents-plugin-documents-openai-primary-runtime-3/work/task34/venv/Scripts/python.exe" requirements-dev.lock --require-hashes 
+Using Python 3.12.14 environment at: C:\Users\Abayb\Documents\Codex\2026-09-26\documents-plugin-documents-openai-primary-runtime-3\work\task34\venv
+Resolved 50 packages in 124ms
+Checked 50 packages in 13ms
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Functional SCA and SAST)
+[Pipeline] bat
+
+C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand>"C:/Users/Abayb/Documents/Codex/2026-09-26/documents-plugin-documents-openai-primary-runtime-3/work/task34/venv/Scripts/python.exe" scripts\verify.py --stage static 
+.FFF.................................                                    [100%]
+================================== FAILURES ===================================
+___________ test_duplicate_observations_preserved_and_ties_ordered ____________
+
+service = <transport.service.DemandService object at 0x000001CCE3541250>
+
+    def test_duplicate_observations_preserved_and_ties_ordered(service):
+        rows = service.demand(DemandFilter(date(2025, 1, 1), date(2025, 1, 31)))
+>       assert [(row["zone_id"], row["pickups"]) for row in rows] == [(1, 2), (2, 2)]
+E       assert [(1, 4), (2, 4)] == [(1, 2), (2, 2)]
+E         
+E         At index 0 diff: (1, 4) != (1, 2)
+E         
+E         Full diff:
+E           [
+E               (
+E                   1,
+E         -         2,
+E         ?         ^
+E         +         4,
+E         ?         ^
+E               ),
+E               (
+E                   2,
+E         -         2,
+E         ?         ^
+E         +         4,
+E         ?         ^
+E               ),
+E           ]
+
+tests\test_analysis.py:25: AssertionError
+_______________________ test_day_hour_and_zone_filters ________________________
+
+service = <transport.service.DemandService object at 0x000001CCE3540DD0>
+
+    def test_day_hour_and_zone_filters(service):
+        query = DemandFilter(date(2025, 1, 1), date(2025, 1, 1), zone_id=1, hour=8)
+>       assert service.demand(query)[0]["pickups"] == 2
+E       assert 4 == 2
+
+tests\test_analysis.py:30: AssertionError
+___________________ test_month_end_trip_included_by_pickup ____________________
+
+service = <transport.service.DemandService object at 0x000001CCE3541B80>
+
+    def test_month_end_trip_included_by_pickup(service):
+        rows = service.demand(DemandFilter(date(2025, 1, 31), date(2025, 1, 31)))
+>       assert rows[0]["pickups"] == 1
+E       assert 2 == 1
+
+tests\test_analysis.py:36: AssertionError
+============================== warnings summary ===============================
+..\..\..\..\2026-09-26\documents-plugin-documents-openai-primary-runtime-3\work\task34\venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Abayb\Documents\Codex\2026-09-26\documents-plugin-documents-openai-primary-runtime-3\work\task34\venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_analysis.py::test_duplicate_observations_preserved_and_ties_ordered - assert [(1, 4), (2, 4)] == [(1, 2), (2, 2)]
+  
+  At index 0 diff: (1, 4) != (1, 2)
+  
+  Full diff:
+    [
+        (
+            1,
+  -         2,
+  ?         ^
+  +         4,
+  ?         ^
+        ),
+        (
+            2,
+  -         2,
+  ?         ^
+  +         4,
+  ?         ^
+        ),
+    ]
+FAILED tests/test_analysis.py::test_day_hour_and_zone_filters - assert 4 == 2
+FAILED tests/test_analysis.py::test_month_end_trip_included_by_pickup - assert 2 == 1
+3 failed, 34 passed, 1 warning in 9.19s
+Traceback (most recent call last):
+  File "C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand\scripts\verify.py", line 202, in <module>
+    static_checks()
+  File "C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand\scripts\verify.py", line 48, in static_checks
+    run([sys.executable, "-m", "pytest", "-q", "-p", "no:cacheprovider", "--junitxml=reports/tests.xml"])
+  File "C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand\scripts\verify.py", line 35, in run
+    raise RuntimeError(f"Stage failed with exit code {result.returncode}")
+RuntimeError: Stage failed with exit code 1
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Live checks and DAST)
+Stage "Live checks and DAST" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deliver verified source)
+Stage "Deliver verified source" skipped due to earlier failure(s)
+[Pipeline] getContext
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE

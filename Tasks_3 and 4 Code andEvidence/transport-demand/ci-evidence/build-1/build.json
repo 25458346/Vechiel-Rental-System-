@@ -1,0 +1,169 @@
+{
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "actions": [
+    {
+      "_class": "hudson.model.CauseAction",
+      "causes": [
+        {
+          "_class": "hudson.model.Cause$UserIdCause",
+          "shortDescription": "Started by user assignment-reviewer",
+          "userId": "assignment-reviewer",
+          "userName": "assignment-reviewer"
+        }
+      ]
+    },
+    {
+      "_class": "hudson.plugins.git.util.BuildData",
+      "buildsByBranchName": {
+        "refs/remotes/origin/codex/task34-evidence": {
+          "_class": "hudson.plugins.git.util.Build",
+          "buildNumber": 1,
+          "buildResult": null,
+          "marked": {
+            "SHA1": "7815da3a660a50867f75af8102a37d56e1da3619",
+            "branch": [
+              {
+                "SHA1": "7815da3a660a50867f75af8102a37d56e1da3619",
+                "name": "refs/remotes/origin/codex/task34-evidence"
+              }
+            ]
+          },
+          "revision": {
+            "SHA1": "7815da3a660a50867f75af8102a37d56e1da3619",
+            "branch": [
+              {
+                "SHA1": "7815da3a660a50867f75af8102a37d56e1da3619",
+                "name": "refs/remotes/origin/codex/task34-evidence"
+              }
+            ]
+          }
+        }
+      },
+      "lastBuiltRevision": {
+        "SHA1": "7815da3a660a50867f75af8102a37d56e1da3619",
+        "branch": [
+          {
+            "SHA1": "7815da3a660a50867f75af8102a37d56e1da3619",
+            "name": "refs/remotes/origin/codex/task34-evidence"
+          }
+        ]
+      },
+      "remoteUrls": [
+        "git://127.0.0.1:19428/project"
+      ],
+      "scmName": ""
+    },
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.workflow.libs.LibrariesAction"
+    },
+    {},
+    {},
+    {
+      "_class": "hudson.tasks.junit.TestResultAction",
+      "failCount": 0,
+      "skipCount": 0,
+      "totalCount": 37,
+      "urlName": "testReport"
+    },
+    {},
+    {},
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.displayurlapi.actions.RunDisplayAction"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.pipeline.modeldefinition.actions.RestartDeclarativePipelineAction"
+    },
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.views.FlowGraphAction"
+    },
+    {},
+    {}
+  ],
+  "artifacts": [
+    {
+      "displayPath": "transport-demand-verified.zip",
+      "fileName": "transport-demand-verified.zip",
+      "relativePath": "dist/transport-demand-verified.zip"
+    },
+    {
+      "displayPath": "dast.html",
+      "fileName": "dast.html",
+      "relativePath": "reports/dast.html"
+    },
+    {
+      "displayPath": "dast.json",
+      "fileName": "dast.json",
+      "relativePath": "reports/dast.json"
+    },
+    {
+      "displayPath": "data-quality.json",
+      "fileName": "data-quality.json",
+      "relativePath": "reports/data-quality.json"
+    },
+    {
+      "displayPath": "live-tests.json",
+      "fileName": "live-tests.json",
+      "relativePath": "reports/live-tests.json"
+    },
+    {
+      "displayPath": "release.json",
+      "fileName": "release.json",
+      "relativePath": "reports/release.json"
+    },
+    {
+      "displayPath": "sast.json",
+      "fileName": "sast.json",
+      "relativePath": "reports/sast.json"
+    },
+    {
+      "displayPath": "sca.json",
+      "fileName": "sca.json",
+      "relativePath": "reports/sca.json"
+    },
+    {
+      "displayPath": "source-manifest.json",
+      "fileName": "source-manifest.json",
+      "relativePath": "reports/source-manifest.json"
+    },
+    {
+      "displayPath": "static-summary.json",
+      "fileName": "static-summary.json",
+      "relativePath": "reports/static-summary.json"
+    },
+    {
+      "displayPath": "tests.xml",
+      "fileName": "tests.xml",
+      "relativePath": "reports/tests.xml"
+    },
+    {
+      "displayPath": "top-zones.json",
+      "fileName": "top-zones.json",
+      "relativePath": "reports/top-zones.json"
+    }
+  ],
+  "building": false,
+  "description": null,
+  "displayName": "#1",
+  "duration": 77402,
+  "estimatedDuration": 52422,
+  "executor": null,
+  "fullDisplayName": "Transport-Demand #1",
+  "id": "1",
+  "keepLog": false,
+  "number": 1,
+  "queueId": 1,
+  "result": "SUCCESS",
+  "timestamp": 1790562214104,
+  "url": "http://127.0.0.1:18090/job/Transport-Demand/1/",
+  "changeSets": [],
+  "culprits": [],
+  "inProgress": false,
+  "nextBuild": {
+    "number": 2,
+    "url": "http://127.0.0.1:18090/job/Transport-Demand/2/"
+  },
+  "previousBuild": null
+}

@@ -1,0 +1,160 @@
+{
+  "_class": "org.jenkinsci.plugins.workflow.job.WorkflowRun",
+  "actions": [
+    {
+      "_class": "hudson.model.CauseAction",
+      "causes": [
+        {
+          "_class": "hudson.triggers.SCMTrigger$SCMTriggerCause",
+          "shortDescription": "Started by an SCM change"
+        }
+      ]
+    },
+    {},
+    {
+      "_class": "hudson.plugins.git.util.BuildData",
+      "buildsByBranchName": {
+        "refs/remotes/origin/codex/task34-evidence": {
+          "_class": "hudson.plugins.git.util.Build",
+          "buildNumber": 2,
+          "buildResult": null,
+          "marked": {
+            "SHA1": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+            "branch": [
+              {
+                "SHA1": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+                "name": "refs/remotes/origin/codex/task34-evidence"
+              }
+            ]
+          },
+          "revision": {
+            "SHA1": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+            "branch": [
+              {
+                "SHA1": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+                "name": "refs/remotes/origin/codex/task34-evidence"
+              }
+            ]
+          }
+        }
+      },
+      "lastBuiltRevision": {
+        "SHA1": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+        "branch": [
+          {
+            "SHA1": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+            "name": "refs/remotes/origin/codex/task34-evidence"
+          }
+        ]
+      },
+      "remoteUrls": [
+        "git://127.0.0.1:19428/project"
+      ],
+      "scmName": ""
+    },
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.workflow.libs.LibrariesAction"
+    },
+    {},
+    {
+      "_class": "hudson.tasks.junit.TestResultAction",
+      "failCount": 3,
+      "skipCount": 0,
+      "totalCount": 37,
+      "urlName": "testReport"
+    },
+    {},
+    {},
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.displayurlapi.actions.RunDisplayAction"
+    },
+    {
+      "_class": "org.jenkinsci.plugins.pipeline.modeldefinition.actions.RestartDeclarativePipelineAction"
+    },
+    {},
+    {
+      "_class": "org.jenkinsci.plugins.workflow.job.views.FlowGraphAction"
+    },
+    {},
+    {}
+  ],
+  "artifacts": [
+    {
+      "displayPath": "source-manifest.json",
+      "fileName": "source-manifest.json",
+      "relativePath": "reports/source-manifest.json"
+    },
+    {
+      "displayPath": "tests.xml",
+      "fileName": "tests.xml",
+      "relativePath": "reports/tests.xml"
+    }
+  ],
+  "building": false,
+  "description": null,
+  "displayName": "#2",
+  "duration": 25102,
+  "estimatedDuration": 52422,
+  "executor": null,
+  "fullDisplayName": "Transport-Demand #2",
+  "id": "2",
+  "keepLog": false,
+  "number": 2,
+  "queueId": 3,
+  "result": "FAILURE",
+  "timestamp": 1790562549194,
+  "url": "http://127.0.0.1:18090/job/Transport-Demand/2/",
+  "changeSets": [
+    {
+      "_class": "hudson.plugins.git.GitChangeSetList",
+      "items": [
+        {
+          "_class": "hudson.plugins.git.GitChangeSet",
+          "affectedPaths": [
+            "src/transport/repository.py",
+            "scripts/verify.py"
+          ],
+          "commitId": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+          "timestamp": 1790562484000,
+          "author": {
+            "absoluteUrl": "http://127.0.0.1:18090/user/assignment",
+            "fullName": "assignment"
+          },
+          "authorEmail": "assignment@example.invalid",
+          "comment": "Demonstrate regression gate with deliberately doubled pickup totals\n",
+          "date": "2026-09-28 06:28:04 +0400",
+          "id": "057a8d4937c84c2a3c055a1424129b8c5c422756",
+          "msg": "Demonstrate regression gate with deliberately doubled pickup totals",
+          "paths": [
+            {
+              "editType": "edit",
+              "file": "scripts/verify.py"
+            },
+            {
+              "editType": "edit",
+              "file": "src/transport/repository.py"
+            }
+          ]
+        }
+      ],
+      "kind": "git"
+    }
+  ],
+  "culprits": [
+    {
+      "absoluteUrl": "http://127.0.0.1:18090/user/assignment",
+      "fullName": "assignment"
+    }
+  ],
+  "inProgress": false,
+  "nextBuild": {
+    "number": 3,
+    "url": "http://127.0.0.1:18090/job/Transport-Demand/3/"
+  },
+  "previousBuild": {
+    "number": 1,
+    "url": "http://127.0.0.1:18090/job/Transport-Demand/1/"
+  }
+}

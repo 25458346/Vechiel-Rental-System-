@@ -1,0 +1,122 @@
+Started by an SCM change
+Checking out git git://127.0.0.1:19428/project into C:\Users\Abayb\Documents\Codex\task34-ci\workspace\Transport-Demand@script\1545cf63e685d6a83e2fa4aab082b7a86a36ae132c4eedc386425416b4004013 to read Jenkinsfile
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\Users\Abayb\Documents\Codex\task34-ci\workspace\Transport-Demand@script\1545cf63e685d6a83e2fa4aab082b7a86a36ae132c4eedc386425416b4004013\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url git://127.0.0.1:19428/project # timeout=10
+Fetching upstream changes from git://127.0.0.1:19428/project
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.49.0.windows.1'
+ > git.exe fetch --tags --force --progress -- git://127.0.0.1:19428/project +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/codex/task34-evidence^{commit}" # timeout=10
+Checking out Revision afbe917e955b24eeb2b4f7349ff2c3a03804b68a (refs/remotes/origin/codex/task34-evidence)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f afbe917e955b24eeb2b4f7349ff2c3a03804b68a # timeout=10
+Commit message: "Allow verification from an extracted submission without Git metadata"
+ > git.exe rev-list --no-walk 057a8d4937c84c2a3c055a1424129b8c5c422756 # timeout=10
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on transport-agent in C:/Users/Abayb/Documents/Codex/task34-ci/agent/workspace/Transport-Demand
+[Pipeline] {
+[Pipeline] timeout
+Timeout set to expire in 20 min
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] deleteDir
+[Pipeline] checkout
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository git://127.0.0.1:19428/project
+ > git.exe init C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand # timeout=10
+Fetching upstream changes from git://127.0.0.1:19428/project
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.49.0.windows.1'
+ > git.exe fetch --tags --force --progress -- git://127.0.0.1:19428/project +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe config remote.origin.url git://127.0.0.1:19428/project # timeout=10
+Avoid second fetch
+Checking out Revision afbe917e955b24eeb2b4f7349ff2c3a03804b68a (refs/remotes/origin/codex/task34-evidence)
+Commit message: "Allow verification from an extracted submission without Git metadata"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Locked dependencies)
+[Pipeline] bat
+
+C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand>"C:/Users/Abayb/.local/bin/uv.exe" pip sync --python "C:/Users/Abayb/Documents/Codex/2026-09-26/documents-plugin-documents-openai-primary-runtime-3/work/task34/venv/Scripts/python.exe" requirements-dev.lock --require-hashes 
+ > git.exe config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/codex/task34-evidence^{commit}" # timeout=10
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f afbe917e955b24eeb2b4f7349ff2c3a03804b68a # timeout=10
+Using Python 3.12.14 environment at: C:\Users\Abayb\Documents\Codex\2026-09-26\documents-plugin-documents-openai-primary-runtime-3\work\task34\venv
+Resolved 50 packages in 656ms
+Checked 50 packages in 12ms
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Functional SCA and SAST)
+[Pipeline] bat
+
+C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand>"C:/Users/Abayb/Documents/Codex/2026-09-26/documents-plugin-documents-openai-primary-runtime-3/work/task34/venv/Scripts/python.exe" scripts\verify.py --stage static 
+.....................................                                    [100%]
+============================== warnings summary ===============================
+..\..\..\..\2026-09-26\documents-plugin-documents-openai-primary-runtime-3\work\task34\venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\Abayb\Documents\Codex\2026-09-26\documents-plugin-documents-openai-primary-runtime-3\work\task34\venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+37 passed, 1 warning in 6.96s
+WARNING:pip_audit._cli:--no-deps is supported, but users are encouraged to fully hash their pinned dependencies
+WARNING:pip_audit._cli:Consider using a tool like `pip-compile`: https://pip-tools.readthedocs.io/en/latest/#using-hashes
+No known vulnerabilities found
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[json]	INFO	JSON output written to file: C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand\reports\sast.json
+Requested verification stages passed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Live checks and DAST)
+[Pipeline] bat
+
+C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand>"C:/Users/Abayb/Documents/Codex/2026-09-26/documents-plugin-documents-openai-primary-runtime-3/work/task34/venv/Scripts/python.exe" scripts\verify.py --stage runtime 
+Requested verification stages passed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deliver verified source)
+[Pipeline] bat
+
+C:\Users\Abayb\Documents\Codex\task34-ci\agent\workspace\Transport-Demand>"C:/Users/Abayb/Documents/Codex/2026-09-26/documents-plugin-documents-openai-primary-runtime-3/work/task34/venv/Scripts/python.exe" scripts\release.py 
+{
+  "build_number": "3",
+  "commit": "afbe917e955b24eeb2b4f7349ff2c3a03804b68a",
+  "filename": "transport-demand-verified.zip",
+  "sha256": "4a3963e175770ab4069308bc4b93ebde038e772ad3672fadeef559c7a2686a9e",
+  "database_sha256": "0141dbc50b65e601338448d5596113e07aa162688f5b62e8cdc33dc7225fa32b",
+  "status": "verified source delivery"
+}
+[Pipeline] archiveArtifacts
+Archiving artifacts
+Recording fingerprints
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // timeout
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

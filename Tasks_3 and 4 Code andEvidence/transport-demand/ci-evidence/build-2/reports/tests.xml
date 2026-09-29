@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="37" time="9.051" timestamp="2026-09-28T06:29:22.681031+04:00" hostname="sura-"><testcase classname="tests.test_analysis" name="test_reject_counts_and_aggregate_reconcile" time="0.381" /><testcase classname="tests.test_analysis" name="test_duplicate_observations_preserved_and_ties_ordered" time="0.300"><failure message="assert [(1, 4), (2, 4)] == [(1, 2), (2, 2)]&#10;  &#10;  At index 0 diff: (1, 4) != (1, 2)&#10;  &#10;  Full diff:&#10;    [&#10;        (&#10;            1,&#10;  -         2,&#10;  ?         ^&#10;  +         4,&#10;  ?         ^&#10;        ),&#10;        (&#10;            2,&#10;  -         2,&#10;  ?         ^&#10;  +         4,&#10;  ?         ^&#10;        ),&#10;    ]">service = &lt;transport.service.DemandService object at 0x000001CCE3541250&gt;
+
+    def test_duplicate_observations_preserved_and_ties_ordered(service):
+        rows = service.demand(DemandFilter(date(2025, 1, 1), date(2025, 1, 31)))
+&gt;       assert [(row["zone_id"], row["pickups"]) for row in rows] == [(1, 2), (2, 2)]
+E       assert [(1, 4), (2, 4)] == [(1, 2), (2, 2)]
+E         
+E         At index 0 diff: (1, 4) != (1, 2)
+E         
+E         Full diff:
+E           [
+E               (
+E                   1,
+E         -         2,
+E         ?         ^
+E         +         4,
+E         ?         ^
+E               ),
+E               (
+E                   2,
+E         -         2,
+E         ?         ^
+E         +         4,
+E         ?         ^
+E               ),
+E           ]
+
+tests\test_analysis.py:25: AssertionError</failure></testcase><testcase classname="tests.test_analysis" name="test_day_hour_and_zone_filters" time="0.310"><failure message="assert 4 == 2">service = &lt;transport.service.DemandService object at 0x000001CCE3540DD0&gt;
+
+    def test_day_hour_and_zone_filters(service):
+        query = DemandFilter(date(2025, 1, 1), date(2025, 1, 1), zone_id=1, hour=8)
+&gt;       assert service.demand(query)[0]["pickups"] == 2
+E       assert 4 == 2
+
+tests\test_analysis.py:30: AssertionError</failure></testcase><testcase classname="tests.test_analysis" name="test_month_end_trip_included_by_pickup" time="0.312"><failure message="assert 2 == 1">service = &lt;transport.service.DemandService object at 0x000001CCE3541B80&gt;
+
+    def test_month_end_trip_included_by_pickup(service):
+        rows = service.demand(DemandFilter(date(2025, 1, 31), date(2025, 1, 31)))
+&gt;       assert rows[0]["pickups"] == 1
+E       assert 2 == 1
+
+tests\test_analysis.py:36: AssertionError</failure></testcase><testcase classname="tests.test_analysis" name="test_existing_database_preserved" time="0.118" /><testcase classname="tests.test_analysis" name="test_bad_schema_does_not_publish_database" time="0.183" /><testcase classname="tests.test_analysis" name="test_duplicate_zone_lookup_rejected" time="0.149" /><testcase classname="tests.test_analysis" name="test_reader_can_be_substituted_and_csv_formula_is_neutralised" time="0.001" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[hour=-1]" time="0.355" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[hour=24]" time="0.217" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[zone_id=0]" time="0.215" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[zone_id=264]" time="0.661" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[limit=0]" time="0.325" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[limit=101]" time="0.280" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[start=2025-01-02&amp;end=2025-01-01]" time="0.373" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[start=2024-12-31]" time="0.210" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[end=2025-02-01]" time="0.205" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[start=not-a-date]" time="0.229" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[zone_id=1%20OR%201=1]" time="0.272" /><testcase classname="tests.test_api" name="test_invalid_filters_rejected[hour=%3Cscript%3E]" time="0.219" /><testcase classname="tests.test_api" name="test_valid_response_and_export_agree" time="0.429" /><testcase classname="tests.test_api" name="test_headers_on_normal_and_rejected_responses[/]" time="0.310" /><testcase classname="tests.test_api" name="test_headers_on_normal_and_rejected_responses[/health]" time="0.276" /><testcase classname="tests.test_api" name="test_headers_on_normal_and_rejected_responses[/summary]" time="0.262" /><testcase classname="tests.test_api" name="test_headers_on_normal_and_rejected_responses[/demand]" time="0.328" /><testcase classname="tests.test_api" name="test_headers_on_normal_and_rejected_responses[/export.csv]" time="0.284" /><testcase classname="tests.test_api" name="test_headers_on_normal_and_rejected_responses[/demand?limit=0]" time="0.242" /><testcase classname="tests.test_api" name="test_no_write_endpoint" time="0.217" /><testcase classname="tests.test_api" name="test_page_escapes_dataset_text" time="0.317" /><testcase classname="tests.test_boundaries" name="test_domain_filter_bounds[hour--1]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_domain_filter_bounds[hour-24]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_domain_filter_bounds[zone_id-0]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_domain_filter_bounds[zone_id-264]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_domain_filter_bounds[limit-0]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_domain_filter_bounds[limit-101]" time="0.001" /><testcase classname="tests.test_boundaries" name="test_inclusive_duration_distance_boundaries" time="0.240" /><testcase classname="tests.test_boundaries" name="test_all_invalid_input_produces_empty_aggregate" time="0.508" /></testsuite></testsuites>

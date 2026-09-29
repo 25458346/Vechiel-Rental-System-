@@ -1,0 +1,24 @@
+{
+  "target": "http://127.0.0.1:18785",
+  "version": "2.17.0",
+  "completed_percent": 100,
+  "rules": [
+    "6",
+    "7",
+    "40012",
+    "40018",
+    "90019",
+    "90020"
+  ],
+  "urls": [
+    "http://127.0.0.1:18785",
+    "http://127.0.0.1:18785/",
+    "http://127.0.0.1:18785/demand?start=2025-01-01&end=2025-01-31&limit=20&zone_id=1&hour=8",
+    "http://127.0.0.1:18785/export.csv?start=2025-01-01&end=2025-01-31&limit=20&zone_id=1&hour=8",
+    "http://127.0.0.1:18785/health",
+    "http://127.0.0.1:18785/openapi.json",
+    "http://127.0.0.1:18785/summary"
+  ],
+  "alerts": [],
+  "blocking_findings": 0
+}

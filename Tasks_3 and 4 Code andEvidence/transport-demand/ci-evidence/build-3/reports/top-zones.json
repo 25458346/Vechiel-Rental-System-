@@ -1,0 +1,122 @@
+[
+  {
+    "zone_id": 161,
+    "zone": "Midtown Center",
+    "borough": "Manhattan",
+    "pickups": 166493
+  },
+  {
+    "zone_id": 237,
+    "zone": "Upper East Side South",
+    "borough": "Manhattan",
+    "pickups": 161372
+  },
+  {
+    "zone_id": 236,
+    "zone": "Upper East Side North",
+    "borough": "Manhattan",
+    "pickups": 153131
+  },
+  {
+    "zone_id": 132,
+    "zone": "JFK Airport",
+    "borough": "Queens",
+    "pickups": 142688
+  },
+  {
+    "zone_id": 230,
+    "zone": "Times Sq/Theatre District",
+    "borough": "Manhattan",
+    "pickups": 123586
+  },
+  {
+    "zone_id": 186,
+    "zone": "Penn Station/Madison Sq West",
+    "borough": "Manhattan",
+    "pickups": 117516
+  },
+  {
+    "zone_id": 162,
+    "zone": "Midtown East",
+    "borough": "Manhattan",
+    "pickups": 115621
+  },
+  {
+    "zone_id": 142,
+    "zone": "Lincoln Square East",
+    "borough": "Manhattan",
+    "pickups": 109001
+  },
+  {
+    "zone_id": 239,
+    "zone": "Upper West Side South",
+    "borough": "Manhattan",
+    "pickups": 94800
+  },
+  {
+    "zone_id": 163,
+    "zone": "Midtown North",
+    "borough": "Manhattan",
+    "pickups": 94342
+  },
+  {
+    "zone_id": 234,
+    "zone": "Union Sq",
+    "borough": "Manhattan",
+    "pickups": 93435
+  },
+  {
+    "zone_id": 170,
+    "zone": "Murray Hill",
+    "borough": "Manhattan",
+    "pickups": 92927
+  },
+  {
+    "zone_id": 68,
+    "zone": "East Chelsea",
+    "borough": "Manhattan",
+    "pickups": 88881
+  },
+  {
+    "zone_id": 138,
+    "zone": "LaGuardia Airport",
+    "borough": "Queens",
+    "pickups": 88485
+  },
+  {
+    "zone_id": 48,
+    "zone": "Clinton East",
+    "borough": "Manhattan",
+    "pickups": 82457
+  },
+  {
+    "zone_id": 141,
+    "zone": "Lenox Hill West",
+    "borough": "Manhattan",
+    "pickups": 80143
+  },
+  {
+    "zone_id": 79,
+    "zone": "East Village",
+    "borough": "Manhattan",
+    "pickups": 80006
+  },
+  {
+    "zone_id": 249,
+    "zone": "West Village",
+    "borough": "Manhattan",
+    "pickups": 75931
+  },
+  {
+    "zone_id": 164,
+    "zone": "Midtown South",
+    "borough": "Manhattan",
+    "pickups": 73817
+  },
+  {
+    "zone_id": 140,
+    "zone": "Lenox Hill East",
+    "borough": "Manhattan",
+    "pickups": 73167
+  }
+]
